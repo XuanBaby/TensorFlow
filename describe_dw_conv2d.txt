@@ -1,0 +1,44 @@
+//tensorflow_core/python/ops/gen_nn_ops.py 
+ 2463 @_dispatch.add_dispatch_list
+ 2464 @tf_export('nn.depthwise_conv2d_backprop_filter', v1=['nn.depthwise_conv2d_native_backprop_filter', 'nn.depthwise_conv2d_backprop_filter'])
+ 2465 @deprecated_endpoints('nn.depthwise_conv2d_native_backprop_filter')
+ 2466 def depthwise_conv2d_native_backprop_filter(input, filter_sizes, out_backprop, strides, padding, data_format="NHWC", dilations=[1, 1, 1, 1], name=None):
+ 2467   r"""Computes the gradients of depthwise convolution with respect to the filter.
+ 2468 
+ 2469   Args:
+ 2470     input: A `Tensor`. Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`.
+ 2471       4-D with shape based on `data_format`.  For example, if
+ 2472       `data_format` is 'NHWC' then `input` is a 4-D `[batch, in_height,
+ 2473       in_width, in_channels]` tensor.
+ 2474     filter_sizes: A `Tensor` of type `int32`.
+ 2475       An integer vector representing the tensor shape of `filter`,
+ 2476       where `filter` is a 4-D
+ 2477       `[filter_height, filter_width, in_channels, depthwise_multiplier]` tensor.
+ 2478     out_backprop: A `Tensor`. Must have the same type as `input`.
+ 2479       4-D with shape  based on `data_format`.
+ 2480       For example, if `data_format` is 'NHWC' then
+ 2481       out_backprop shape is `[batch, out_height, out_width, out_channels]`.
+ 2482       Gradients w.r.t. the output of the convolution.
+ 2483     strides: A list of `ints`.
+ 2484       The stride of the sliding window for each dimension of the input
+ 2485       of the convolution.
+ 2486     padding: A `string` from: `"SAME", "VALID"`.
+ 2487       The type of padding algorithm to use.
+ 2488     data_format: An optional `string` from: `"NHWC", "NCHW"`. Defaults to `"NHWC"`.
+ 2489       Specify the data format of the input and output data. With the
+ 2490       default format "NHWC", the data is stored in the order of:
+ 2491           [batch, height, width, channels].
+ 2492       Alternatively, the format could be "NCHW", the data storage order of:
+ 2493           [batch, channels, height, width].
+ 2494     dilations: An optional list of `ints`. Defaults to `[1, 1, 1, 1]`.
+ 2495       1-D tensor of length 4.  The dilation factor for each dimension of
+ 2496       `input`. If set to k > 1, there will be k-1 skipped cells between each filter
+ 2497       element on that dimension. The dimension order is determined by the value of
+ 2498       `data_format`, see above for details. Dilations in the batch and depth
+ 2499       dimensions must be 1.
+ 2500     name: A name for the operation (optional).
+ 2501 
+ 2502   Returns:
+ 2503     A `Tensor`. Has the same type as `input`.
+ 2504   """
+
